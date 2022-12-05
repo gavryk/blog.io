@@ -1,10 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import { registerValidator } from './validations/auth.js';
 import checkAuth from './utils/checkAuth.js';
+import { registerValidator, loginValidator, postCreateValidation } from './validations.js';
 
 import { register, login, getMe } from './controllers/UserController.js';
+import { addPost } from './controllers/PostController.js';
 
 //.env config
 dotenv.config({ debug: true });
@@ -18,9 +19,12 @@ const app = express();
 app.use(express.json());
 
 //Routes
-app.post('/auth/login', login);
+//Auth
+app.post('/auth/login', loginValidator, login);
 app.post('/auth/register', registerValidator, register);
 app.get('/auth/me', checkAuth, getMe);
+//Posts
+app.post('/posts', checkAuth, addPost);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
