@@ -1,0 +1,81 @@
+:root {
+  //colors
+  --base--color--white: #fff;
+  --base--color--grey: #f6f6f6;
+  --base--color--grey-2: #f9f9f9;
+  --base--color--grey-3: #f7f7f7;
+  --base--color--grey-4: #f3f3f3;
+  --base--color--grey-5: #f4f4f4;
+  --base--color--grey-6: #b6b6b6;
+  --base--color--grey-7: #8d8d8d;
+  --base--color--darkgrey: #383838;
+  --base--color--black: #232323;
+  --base--color--black-2: #3d3d3d;
+
+  --base--color--main: #b9e7e7;
+  --base--color--green: teal;
+  --base--color--green-2: rgb(8, 158, 158);
+  --base--color--red: #f80b0b;
+  --base--color--red-2: #f14b4b;
+
+  //container
+  --base--container--widht: 90%;
+
+  //spaces
+  --base--spaces--1: 4px;
+  --base--spaces--2: 8px;
+  --base--spaces--3: 12px;
+  --base--spaces--4: 16px;
+  --base--spaces--5: 20px;
+  --base--spaces--6: 24px;
+  --base--spaces--7: 28px;
+  --base--spaces--8: 32px;
+  --base--spaces--9: 36px;
+  --base--spaces--10: 40px;
+  --base--spaces--11: 44px;
+  --base--spaces--12: 48px;
+  --base--spaces--13: 50px;
+  --base--spaces--14: 54px;
+  --base--spaces--15: 58px;
+  --base--spaces--16: 62px;
+  --base--spaces--17: 66px;
+  --base--spaces--18: 70px;
+  --base--spaces--19: 74px;
+  --base--spaces--20: 78px;
+  --base--spaces--21: 82px;
+  --base--spaces--22: 86px;
+  --base--spaces--23: 90px;
+  --base--spaces--24: 94px;
+  --base--spaces--25: 98px;
+
+  //font sizes
+  --base--font--size-sm: 12px;
+  --base--font--size: 14px;
+  --base--font--size-md: 16px;
+  --base--font--size-lg: 18px;
+  --base--font--size--h1: 48px;
+  --base--font--size--h1-md: 40px;
+  --base--font--size--h1-sm: 34px;
+  --base--font--size--h2: 34px;
+  --base--font--size--h2-md: 32px;
+  --base--font--size--h2-sm: 30px;
+  --base--font--size--h3: 32px;
+  --base--font--size--h3-md: 30px;
+  --base--font--size--h3-sm: 28px;
+  --base--font--size--h4: 28px;
+  --base--font--size--h4-md: 26px;
+  --base--font--size--h4-sm: 24px;
+  --base--font--size--h5: 20px;
+
+  //sizes
+  --base--logo-size-sm: 80px;
+  --base--logo-size-md: 100px;
+  --base--logo-size-lg: 130px;
+}
+
+@mixin container($width) {
+  width: #{$width};
+  max-width: 96%;
+  margin: 0 auto;
+  position: relative;
+}
