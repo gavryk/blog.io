@@ -12,9 +12,9 @@ export const registerValidator = [
   body('avatarUrl', 'The avatar link is incorrect!').optional().isURL(),
 ];
 
-export const postCreateValidation = [
-  body('title', 'Enter a post title').isLength({ min: 3 }).toString(),
-  body('text', 'Enter a post text').isLength({ min: 10 }).toString(),
-  body('tags', 'Invalid tag format').optional().toString(),
+export const postCreateValidator = [
+  body('title', 'Enter a post title').isLength({ min: 3 }).isString(),
+  body('text', 'Enter a post text').isLength({ min: 10 }).isString(),
+  body('tags', 'Invalid tag format').optional().isString(),
   body('imageUrl', 'Invalid image link').optional().isString(),
 ];
