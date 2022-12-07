@@ -1,10 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
-import checkAuth from './utils/checkAuth.js';
+import multer from 'multer';
 import { registerValidator, loginValidator, postCreateValidator } from './validations.js';
+import { checkAuth, handleValidationErrors } from './utils/index.js';
 
-import { register, login, getMe } from './controllers/UserController.js';
+import { getMe, login, register } from './controllers/UserController.js';
 import {
   addPost,
   deletePost,
@@ -23,18 +24,37 @@ mongoose
 
 const app = express();
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname.replace(' ', '_'));
+  },
+});
+const upload = multer({ storage });
 
 //Routes
 //Auth
-app.post('/auth/login', loginValidator, login);
-app.post('/auth/register', registerValidator, register);
+app.post('/auth/login', loginValidator, handleValidationErrors, login);
+app.post('/auth/register', registerValidator, handleValidationErrors, register);
 app.get('/auth/me', checkAuth, getMe);
+
 //Posts
 app.get('/posts', getPosts);
 app.get('/posts/:id', getPost);
-app.post('/posts', checkAuth, postCreateValidator, addPost);
+app.post('/posts', checkAuth, postCreateValidator, handleValidationErrors, addPost);
+app.patch('/posts/:id', checkAuth, handleValidationErrors, updatePost);
 app.delete('/posts/:id', checkAuth, deletePost);
-app.patch('/posts/:id', checkAuth, updatePost);
+
+//Upload Route
+app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+  res.json({
+    url: `/uploads/${req.file.originalname}`,
+  });
+});
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
