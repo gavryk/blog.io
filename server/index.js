@@ -31,10 +31,10 @@ app.post('/auth/register', registerValidator, register);
 app.get('/auth/me', checkAuth, getMe);
 //Posts
 app.get('/posts', getPosts);
-app.post('/posts', checkAuth, postCreateValidator, addPost);
 app.get('/posts/:id', getPost);
+app.post('/posts', checkAuth, postCreateValidator, addPost);
 app.delete('/posts/:id', checkAuth, deletePost);
-app.patch('/posts/:id', updatePost);
+app.patch('/posts/:id', checkAuth, updatePost);
 
 app.listen(process.env.PORT, (err) => {
   if (err) {
