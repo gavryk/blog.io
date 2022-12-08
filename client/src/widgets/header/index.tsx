@@ -1,14 +1,19 @@
 import clsx from 'clsx';
 import React from 'react';
-import { Logo } from '../../components';
+import { useSelector } from 'react-redux';
+import { Logo, Progress } from '../../components';
+import { settingsSelector } from '../../redux/slices/settings/selectors';
 import styles from './styles.module.scss';
 
 export const Header: React.FC = () => {
+  const { isLoaded } = useSelector(settingsSelector);
+
   return (
     <header className={clsx(styles.header)}>
       <div className="container">
         <Logo link="/" size="lg" />
       </div>
+      {!isLoaded && <Progress position="bottom" />}
     </header>
   );
 };

@@ -1,12 +1,15 @@
 import React from 'react';
-import { Header } from './widgets';
+import { Route, Routes } from 'react-router-dom';
+import { MainLayout } from './layout';
+import { Home } from './pages/Home';
 
 const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <h1>Hello Blog!</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 

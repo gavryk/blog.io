@@ -1,0 +1,47 @@
+.progressBar {
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  overflow: hidden;
+  z-index: 1000;
+  &.top {
+    top: 0;
+  }
+  &.bottom {
+    bottom: -1px;
+  }
+  .progress {
+    width: auto;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    transition: transform 0.2s linear;
+    transform-origin: left;
+    background: linear-gradient(
+      90deg,
+      var(--base--color--main) 0%,
+      var(--base--color--darkgrey) 80%
+    );
+    animation: animation-tail 1.8s cubic-bezier(0.65, 0.815, 0.735, 0.6) infinite;
+    @keyframes animation-tail {
+      0% {
+        left: -35%;
+        right: 100%;
+      }
+      40% {
+        left: 25%;
+        right: -50%;
+      }
+      60% {
+        left: 100%;
+        right: -90%;
+      }
+      100% {
+        left: 100%;
+        right: -90%;
+      }
+    }
+  }
+}
