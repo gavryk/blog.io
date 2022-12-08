@@ -10,10 +10,10 @@ export const Header: React.FC = () => {
 
   return (
     <header className={clsx(styles.header)}>
+      {!isLoaded && <Progress position="bottom" />}
       <div className="container">
         <Logo link="/" size="lg" />
       </div>
-      {!isLoaded && <Progress position="bottom" />}
     </header>
   );
 };
