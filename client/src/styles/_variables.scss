@@ -12,11 +12,13 @@
   --base--color--black: #232323;
   --base--color--black-2: #3d3d3d;
 
-  --base--color--main: #b9e7e7;
-  --base--color--green: teal;
-  --base--color--green-2: rgb(8, 158, 158);
+  --base--color--main: #9c1b4d;
+  --base--color--green: rgb(30, 177, 42);
+  --base--color--teal: rgb(8, 158, 158);
   --base--color--red: #f80b0b;
   --base--color--red-2: #f14b4b;
+  --base--color--red-dark: #9c1b4d;
+  --base--color--red-purple: #b01c97;
 
   //container
   --base--container--widht: 90%;
@@ -71,6 +73,13 @@
   --base--logo-size-sm: 80px;
   --base--logo-size-md: 100px;
   --base--logo-size-lg: 130px;
+
+  //Shadows
+  --base--box-shadow: 0 0 6px 0 rgb(0 0 0 / 10%);
+  --base--box-shadow-1: 0 0 10px 0 rgb(0 0 0 / 10%);
+  --base--box-shadow-2: 0 0 10px 0 rgb(0 0 0 / 12%);
+  --base--box-shadow-3: 0 0 15px 0 rgb(0 0 0 / 10%);
+  --base--box-shadow-4: 0 0 20px 0 rgb(0 0 0 / 15%);
 }
 
 @mixin container($width) {
