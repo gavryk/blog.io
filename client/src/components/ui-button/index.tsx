@@ -6,7 +6,7 @@ interface ButtonProps {
   children: React.ReactNode;
   active?: boolean;
   fluid?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg';
   color?: 'orange' | 'black' | 'red' | 'green' | 'purple' | 'bordo';
   variants?: 'contained' | 'outlined' | 'text';
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
@@ -39,6 +39,9 @@ export const UIButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
           [styles.black]: color === 'black',
           [styles.red]: color === 'red',
           [styles.green]: color === 'green',
+          [styles.orange]: color === 'orange',
+          [styles.bordo]: color === 'bordo',
+          [styles.purple]: color === 'purple',
           [styles.active]: active,
           [styles.fluid]: fluid,
         })}>

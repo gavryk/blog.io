@@ -4,3 +4,11 @@
   box-shadow: var(--base--box-shadow-1);
   position: relative;
 }
+
+.headerWrapper {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: var(--base--spaces--4);
+}
