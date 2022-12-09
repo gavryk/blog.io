@@ -87,6 +87,8 @@
   --base--box-shadow-2: 0 0 10px 0 rgb(0 0 0 / 12%);
   --base--box-shadow-3: 0 0 15px 0 rgb(0 0 0 / 10%);
   --base--box-shadow-4: 0 0 20px 0 rgb(0 0 0 / 15%);
+
+  --base--box-shadow-blue: 0 0 10px 0 var(--base--color--lightblue);
 }
 
 @mixin container($width) {

@@ -1,16 +1,22 @@
 export interface PostsSliceTypes {
   posts: PostItem[];
-  tags: TagItem[];
+  tags: string[];
 }
 
 export type PostItem = {
-  id: string;
-  title: string;
-  text: string;
-  tags: string[];
+  _id: string;
+  title?: string;
+  text?: string;
+  tags?: string[];
   viewsCount: number;
+  imageUrl?: string;
+  user?: UserProps;
+  createdAt: string;
 };
 
-export type TagItem = {
-  tag: string;
+export type UserProps = {
+  _id: string;
+  fullName: string;
+  emai: string;
+  avatarUrl: string;
 };

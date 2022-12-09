@@ -1,0 +1,5 @@
+.homePage {
+  display: grid;
+  grid-template-columns: 63% 37%;
+  grid-gap: var(--base--spaces--10);
+}

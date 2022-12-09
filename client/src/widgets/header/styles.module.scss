@@ -2,7 +2,10 @@
   padding: var(--base--spaces--4) 0;
   background-color: var(--base--color--white);
   box-shadow: var(--base--box-shadow-1);
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
 }
 
 .headerWrapper {

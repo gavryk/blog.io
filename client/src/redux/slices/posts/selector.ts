@@ -1,3 +1,3 @@
 import { RootState } from '../../store';
 
-export const settingsSelector = (state: RootState) => state.posts;
+export const postsSelector = (state: RootState) => state.posts;
