@@ -11,7 +11,7 @@ type PostCardProps = PostItem & {
   link: string;
 };
 
-export const UIPostItem: React.FC<PostCardProps> = ({
+export const UIPostCard: React.FC<PostCardProps> = ({
   _id,
   title,
   text,

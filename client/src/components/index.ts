@@ -5,5 +5,5 @@ export * from './ui-button';
 export * from './ui-label';
 export * from './ui-input';
 export * from './ui-grid';
-export * from './ui-post-item';
-export * from './ui-post-item/skeleton-card';
+export * from './ui-post-card';
+export * from './ui-post-card/skeleton-card';

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { SkeletonCard, UIGrid, UIPostItem } from '../components';
+import { SkeletonCard, UIGrid, UIPostCard } from '../components';
 import { fetchPosts } from '../redux/slices/posts/asyncPosts';
 import { postsSelector } from '../redux/slices/posts/selector';
 import { settingsSelector } from '../redux/slices/settings/selectors';
@@ -18,7 +18,7 @@ export const Home = () => {
   }, [dispatch]);
 
   const postsItems = posts.map((post) => (
-    <UIPostItem {...post} key={post._id} link={`/posts/${post._id}`} />
+    <UIPostCard {...post} key={post._id} link={`/posts/${post._id}`} />
   ));
   const skeletons = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />);
 
