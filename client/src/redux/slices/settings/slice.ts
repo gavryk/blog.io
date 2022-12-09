@@ -3,6 +3,7 @@ import { SettingsSliceTypes } from './types';
 
 const initialState: SettingsSliceTypes = {
   isLoaded: true,
+  isAuth: false,
 };
 
 export const settingsSlice = createSlice({

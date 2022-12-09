@@ -129,6 +129,19 @@
   }
 }
 
+.contained.blue {
+  background-color: var(--base--color--lightblue);
+  color: var(--base--color--white);
+  a,
+  span {
+    color: var(--base--color--white);
+  }
+  &:hover,
+  &.active {
+    background-color: var(--base--color--lightblue-2);
+  }
+}
+
 .contained.red {
   background-color: var(--base--color--red);
   color: var(--base--color--white);
@@ -243,6 +256,24 @@
   &:hover,
   &.active {
     background-color: var(--base--color--red);
+    color: var(--base--color--white);
+    a {
+      color: var(--base--color--white);
+    }
+  }
+}
+
+.outlined.blue {
+  border: 1px solid var(--base--color--lightblue);
+  background-color: transparent;
+  color: var(--base--color--lightblue);
+  a,
+  span {
+    color: var(--base--color--lightblue);
+  }
+  &:hover,
+  &.active {
+    background-color: var(--base--color--lightblue);
     color: var(--base--color--white);
     a {
       color: var(--base--color--white);
