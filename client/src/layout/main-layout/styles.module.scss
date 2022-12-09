@@ -1,0 +1,11 @@
+.layout {
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  &.login,
+  &.register {
+    background-color: var(--base--color--lightblue);
+  }
+}

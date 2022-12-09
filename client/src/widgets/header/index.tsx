@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Logo, Progress, UIButton } from '../../components';
 import { settingsSelector } from '../../redux/slices/settings/selectors';
 import styles from './styles.module.scss';
@@ -14,12 +15,16 @@ export const Header: React.FC = () => {
       <div className="container">
         <div className={styles.headerWrapper}>
           <Logo link="/" size="lg" />
-          <UIButton size="sm" variants="outlined">
-            Login
-          </UIButton>
-          <UIButton size="sm" color="bordo">
-            Sign Up
-          </UIButton>
+          <Link to="/login">
+            <UIButton size="sm" variants="outlined">
+              Login
+            </UIButton>
+          </Link>
+          <Link to="/register">
+            <UIButton size="sm" color="bordo">
+              Sign Up
+            </UIButton>
+          </Link>
         </div>
       </div>
     </header>
