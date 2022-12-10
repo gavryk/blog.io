@@ -28,51 +28,41 @@
   }
   .postInfo {
     padding: 0 var(--base--spaces--6) var(--base--spaces--6);
-    .author {
-      display: grid;
-      grid-template-columns: 50px auto;
-      align-items: center;
-      grid-gap: var(--base--spaces--4);
-      margin-bottom: var(--base--spaces--2);
-      .userAvatar {
-        width: 100%;
-        height: 50px;
-        border-radius: 50%;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      .info {
-        span {
-          display: block;
-          &.name {
-            font-weight: 700;
-          }
-        }
-      }
-    }
     .text {
       padding-left: var(--base--spaces--16);
       .tags {
         list-style: none;
         padding: 0;
-        margin-top: var(--base--spaces--2);
+        margin: var(--base--spaces--2) 0;
         li {
           display: inline-block;
-          font-size: 14px;
-          margin-right: 15px;
+          font-size: var(--base--font--size);
+          margin-right: var(--base--spaces--4);
           opacity: 0.5;
-
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
           &:hover {
             opacity: 1;
           }
-
           a {
             text-decoration: none;
             color: #000;
+          }
+        }
+      }
+
+      .details {
+        span {
+          display: inline-flex;
+          grid-gap: var(--base--spaces--2);
+          align-items: center;
+          font-size: var(--base--font--size);
+          margin-right: var(--base--spaces--5);
+          opacity: 0.5;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          &:hover {
+            opacity: 1;
           }
         }
       }

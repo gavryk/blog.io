@@ -2,10 +2,12 @@ import React from 'react';
 import { PostItem } from '../../redux/slices/posts/types';
 import { UITypography } from '../ui-typography';
 import imgHolder from '../../assets/img/noimg.png';
-import avatarHolder from '../../assets/img/avatar-holder.jpg';
-import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { UIUserInfo } from '../ui-user-info';
+import styles from './styles.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment, faEye } from '@fortawesome/free-solid-svg-icons';
 
 type PostCardProps = PostItem & {
   link: string;
@@ -30,15 +32,7 @@ export const UIPostCard: React.FC<PostCardProps> = ({
         </div>
       </Link>
       <div className={styles.postInfo}>
-        <div className={styles.author}>
-          <div className={styles.userAvatar}>
-            <img src={user?.avatarUrl ? user.avatarUrl : avatarHolder} alt="author" />
-          </div>
-          <div className={styles.info}>
-            <span className={styles.name}>{user?.fullName}</span>
-            <span className={styles.date}>{moment(createdAt).format('LL')}</span>
-          </div>
-        </div>
+        <UIUserInfo {...user} additionalText={moment(createdAt).format('LL')} />
         <div className={styles.text}>
           <UITypography variant="h3" bottomSpace="none">
             {title}
@@ -48,6 +42,14 @@ export const UIPostCard: React.FC<PostCardProps> = ({
               <li>#{tag}</li>
             ))}
           </ul>
+          <div className={styles.details}>
+            <span>
+              <FontAwesomeIcon icon={faEye} /> {viewsCount}
+            </span>
+            <span>
+              <FontAwesomeIcon icon={faComment} /> 3
+            </span>
+          </div>
         </div>
       </div>
     </div>

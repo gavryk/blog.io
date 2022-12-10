@@ -7,3 +7,4 @@ export * from './ui-input';
 export * from './ui-grid';
 export * from './ui-post-card';
 export * from './ui-post-card/skeleton-card';
+export * from './ui-user-info';

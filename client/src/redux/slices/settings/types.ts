@@ -1,4 +1,4 @@
 export interface SettingsSliceTypes {
-  isLoaded: boolean;
+  isLoaded: 'loading' | 'success' | 'error';
   isAuth: boolean;
 }

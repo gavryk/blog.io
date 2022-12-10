@@ -10,7 +10,7 @@ export type PostItem = {
   tags?: string[];
   viewsCount: number;
   imageUrl?: string;
-  user?: UserProps;
+  user: UserProps;
   createdAt: string;
 };
 
@@ -18,5 +18,5 @@ export type UserProps = {
   _id: string;
   fullName: string;
   emai: string;
-  avatarUrl: string;
+  avatarUrl?: string;
 };

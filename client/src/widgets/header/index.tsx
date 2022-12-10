@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className={clsx(styles.header)}>
-      {!isLoaded && <Progress position="bottom" />}
+      {isLoaded === 'loading' && <Progress position="bottom" />}
       <div className="container">
         <div className={styles.headerWrapper}>
           <Logo link="/" size="lg" />
