@@ -10,8 +10,16 @@
 
 .headerWrapper {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: repeat(2, auto);
   align-items: center;
   justify-content: space-between;
+  grid-gap: var(--base--spaces--3);
+}
+
+.headerControls {
+  display: flex;
   grid-gap: var(--base--spaces--4);
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
