@@ -12,6 +12,7 @@ import {
   deletePost,
   getPost,
   getPosts,
+  getTags,
   updatePost,
 } from './controllers/PostController.js';
 
@@ -50,6 +51,9 @@ app.get('/posts/:id', getPost);
 app.post('/posts', checkAuth, postCreateValidator, handleValidationErrors, addPost);
 app.patch('/posts/:id', checkAuth, handleValidationErrors, updatePost);
 app.delete('/posts/:id', checkAuth, deletePost);
+
+//Tags
+app.get('/tags', getTags);
 
 //Upload Route
 app.post('/upload', checkAuth, upload.single('image'), (req, res) => {

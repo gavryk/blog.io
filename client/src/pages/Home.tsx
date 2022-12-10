@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { SkeletonCard, UIGrid, UIPostCard, UITypography } from '../components';
-import { fetchPosts } from '../redux/slices/posts/asyncPosts';
+import { fetchPosts, fetchTags } from '../redux/slices/posts/asyncPosts';
 import { postsSelector } from '../redux/slices/posts/selector';
 import { settingsSelector } from '../redux/slices/settings/selectors';
 import { useAppDispatch } from '../redux/store';
@@ -15,6 +15,7 @@ export const Home = () => {
 
   useEffect(() => {
     dispatch(fetchPosts());
+    dispatch(fetchTags());
   }, [dispatch]);
 
   const postsItems = posts.map((post) => (

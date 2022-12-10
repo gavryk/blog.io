@@ -38,8 +38,8 @@ export const UIPostCard: React.FC<PostCardProps> = ({
             {title}
           </UITypography>
           <ul className={styles.tags}>
-            {tags?.map((tag) => (
-              <li>#{tag}</li>
+            {tags?.map((tag, index) => (
+              <li key={`${tag}_${index}`}>#{tag}</li>
             ))}
           </ul>
           <div className={styles.details}>
