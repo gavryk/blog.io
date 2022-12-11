@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchLogin } from '../auth/asyncAuth';
 import { fetchPosts } from '../posts/asyncPosts';
 import { SettingsSliceTypes } from './types';
 
@@ -23,6 +24,15 @@ export const settingsSlice = createSlice({
       state.isLoaded = 'success';
     });
     builder.addCase(fetchPosts.rejected, (state) => {
+      state.isLoaded = 'error';
+    });
+    builder.addCase(fetchLogin.pending, (state) => {
+      state.isLoaded = 'loading';
+    });
+    builder.addCase(fetchLogin.fulfilled, (state, action) => {
+      state.isLoaded = 'success';
+    });
+    builder.addCase(fetchLogin.rejected, (state) => {
       state.isLoaded = 'error';
     });
   },
