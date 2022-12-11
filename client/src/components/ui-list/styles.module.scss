@@ -1,0 +1,11 @@
+.root {
+  position: relative;
+  .listTitle {
+    padding: 0 var(--base--spaces--6) var(--base--spaces--2);
+  }
+  .list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,5 +1,7 @@
 .homePage {
   display: grid;
-  grid-template-columns: 63% 37%;
+  grid-template-columns: 1fr 35%;
   grid-gap: var(--base--spaces--10);
+  align-items: flex-start;
+  position: relative;
 }

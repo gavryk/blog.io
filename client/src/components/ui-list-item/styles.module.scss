@@ -1,0 +1,26 @@
+.item {
+  padding: var(--base--spaces--3) var(--base--spaces--6);
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  align-items: center;
+  grid-gap: 15px;
+  font-size: var(--base--font--size-lg);
+  color: var(--base--color--darkgrey);
+  transition: all 0.3s ease-in-out;
+  &.clickable {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--base--color--grey-5);
+    }
+  }
+  span {
+    font-weight: 700;
+    color: var(--base--color--darkgrey);
+    line-height: 1.1;
+  }
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
