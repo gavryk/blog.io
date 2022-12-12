@@ -1,0 +1,8 @@
+.authPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-height: calc(100vh - 80px);
+}

@@ -5,7 +5,6 @@ import { SettingsSliceTypes } from './types';
 
 const initialState: SettingsSliceTypes = {
   isLoaded: 'loading',
-  isAuth: false,
 };
 
 export const settingsSlice = createSlice({

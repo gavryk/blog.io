@@ -3,11 +3,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Logo, Progress, UIButton } from '../../components';
+import { authSelector } from '../../redux/slices/auth/selector';
 import { settingsSelector } from '../../redux/slices/settings/selectors';
 import styles from './styles.module.scss';
 
 export const Header: React.FC = () => {
-  const { isLoaded, isAuth } = useSelector(settingsSelector);
+  const { isLoaded } = useSelector(settingsSelector);
+  const { auth } = useSelector(authSelector);
 
   return (
     <header className={clsx(styles.header)}>
@@ -16,7 +18,7 @@ export const Header: React.FC = () => {
         <div className={styles.headerWrapper}>
           <Logo link="/" size="lg" />
           <div className={styles.headerControls}>
-            {isAuth ? (
+            {auth !== null ? (
               <>
                 <Link to="/add-post">
                   <UIButton size="sm" color="blue">

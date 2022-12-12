@@ -7,4 +7,10 @@ export type AuthProps = {
 
 export interface AuthSliceProps {
   auth: AuthProps | null;
+  errorString: any;
+}
+
+export interface LoginFormValue {
+  email: string;
+  password: string;
 }
