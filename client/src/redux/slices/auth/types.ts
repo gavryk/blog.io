@@ -11,6 +11,6 @@ export interface AuthSliceProps {
 }
 
 export interface LoginFormValue {
-  email: string;
+  email: '';
   password: string;
 }

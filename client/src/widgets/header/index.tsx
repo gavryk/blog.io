@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Logo, Progress, UIButton } from '../../components';
+import { Logo, Progress, UIButton, UIUserInfo } from '../../components';
 import { authSelector } from '../../redux/slices/auth/selector';
 import { settingsSelector } from '../../redux/slices/settings/selectors';
 import styles from './styles.module.scss';
@@ -20,6 +20,7 @@ export const Header: React.FC = () => {
           <div className={styles.headerControls}>
             {auth !== null ? (
               <>
+                <UIUserInfo fullName={auth.fullName} small />
                 <Link to="/add-post">
                   <UIButton size="sm" color="blue">
                     Add Post

@@ -4,6 +4,13 @@
   align-items: center;
   grid-gap: var(--base--spaces--4);
   margin-bottom: var(--base--spaces--2);
+  &.small {
+    grid-template-columns: 30px auto;
+    margin-bottom: 0;
+    .userAvatar {
+      height: 30px;
+    }
+  }
   .userAvatar {
     width: 100%;
     height: 50px;
