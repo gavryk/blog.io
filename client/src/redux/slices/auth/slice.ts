@@ -10,7 +10,11 @@ const initialState: AuthSliceProps = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.auth = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchLogin.pending, (state) => {
       state.auth = null;
@@ -27,6 +31,6 @@ export const authSlice = createSlice({
   },
 });
 
-// export const { setLoading } = authSlice.actions;
+export const { logout } = authSlice.actions;
 
 export default authSlice.reducer;

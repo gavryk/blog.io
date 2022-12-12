@@ -4,12 +4,21 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Logo, Progress, UIButton, UIUserInfo } from '../../components';
 import { authSelector } from '../../redux/slices/auth/selector';
+import { logout } from '../../redux/slices/auth/slice';
 import { settingsSelector } from '../../redux/slices/settings/selectors';
+import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 
 export const Header: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { auth } = useSelector(authSelector);
+
+  const logOut = () => {
+    if (window.confirm('Are you sure you want to log out?')) {
+      dispatch(logout());
+    }
+  };
 
   return (
     <header className={clsx(styles.header)}>
@@ -26,7 +35,7 @@ export const Header: React.FC = () => {
                     Add Post
                   </UIButton>
                 </Link>
-                <UIButton size="sm" color="black">
+                <UIButton size="sm" color="black" onClick={logOut}>
                   Logout
                 </UIButton>
               </>
