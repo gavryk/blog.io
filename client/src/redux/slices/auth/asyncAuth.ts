@@ -11,7 +11,7 @@ export const fetchLogin = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/login', params);
       if ('token' in data) {
-        localStorage.setItem('user', JSON.stringify(omit(data, 'token')));
+        localStorage.setItem('user', data.token);
       }
       return omit(data, 'token');
     } catch (err: any) {
@@ -19,3 +19,8 @@ export const fetchLogin = createAsyncThunk(
     }
   },
 );
+
+export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
+  const { data } = await axios.get('/auth/me');
+  return omit(data, 'token');
+});

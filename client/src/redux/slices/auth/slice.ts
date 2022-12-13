@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserLS } from '../../../utils/getUserStorage';
-import { fetchLogin } from './asyncAuth';
+import { fetchLogin, fetchAuthMe } from './asyncAuth';
 import { AuthProps, AuthSliceProps } from './types';
 
 const initialState: AuthSliceProps = {
-  auth: getUserLS(),
+  auth: null,
   errorString: null,
 };
 
@@ -29,6 +28,15 @@ export const authSlice = createSlice({
     builder.addCase(fetchLogin.rejected, (state, action) => {
       state.auth = null;
       state.errorString = action.payload;
+    });
+    builder.addCase(fetchAuthMe.pending, (state) => {
+      state.auth = null;
+    });
+    builder.addCase(fetchAuthMe.fulfilled, (state, action) => {
+      state.auth = action.payload as Omit<AuthProps, 'token'>;
+    });
+    builder.addCase(fetchAuthMe.rejected, (state, action) => {
+      state.auth = null;
     });
   },
 });
