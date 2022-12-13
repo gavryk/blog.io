@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchLogin } from './asyncAuth';
-import { AuthSliceProps } from './types';
+import { AuthProps, AuthSliceProps } from './types';
 
 const initialState: AuthSliceProps = {
   auth: null,
@@ -21,7 +21,7 @@ export const authSlice = createSlice({
       state.errorString = null;
     });
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
-      state.auth = action.payload;
+      state.auth = <Omit<AuthProps, 'token'>>action.payload;
       state.errorString = null;
     });
     builder.addCase(fetchLogin.rejected, (state, action) => {
