@@ -10,6 +10,9 @@ export const fetchLogin = createAsyncThunk(
   async (params: LoginFormValue, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/auth/login', params);
+      if ('token' in data) {
+        localStorage.setItem('user', JSON.stringify(omit(data, 'token')));
+      }
       return omit(data, 'token');
     } catch (err: any) {
       return rejectWithValue(err.response.data.message);

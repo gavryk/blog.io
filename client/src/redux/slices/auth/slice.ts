@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getUserLS } from '../../../utils/getUserStorage';
 import { fetchLogin } from './asyncAuth';
 import { AuthProps, AuthSliceProps } from './types';
 
 const initialState: AuthSliceProps = {
-  auth: null,
+  auth: getUserLS(),
   errorString: null,
 };
 
@@ -13,6 +14,7 @@ export const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.auth = null;
+      localStorage.removeItem('user');
     },
   },
   extraReducers: (builder) => {
@@ -21,7 +23,7 @@ export const authSlice = createSlice({
       state.errorString = null;
     });
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
-      state.auth = <Omit<AuthProps, 'token'>>action.payload;
+      state.auth = action.payload as Omit<AuthProps, 'token'>;
       state.errorString = null;
     });
     builder.addCase(fetchLogin.rejected, (state, action) => {
