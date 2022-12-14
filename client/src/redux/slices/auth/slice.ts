@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchLogin, fetchAuthMe } from './asyncAuth';
+import { fetchLogin, fetchAuthMe, fetchRegister } from './asyncAuth';
 import { AuthProps, AuthSliceProps } from './types';
 
 const initialState: AuthSliceProps = {
@@ -37,6 +37,15 @@ export const authSlice = createSlice({
     });
     builder.addCase(fetchAuthMe.rejected, (state, action) => {
       state.auth = null;
+    });
+    builder.addCase(fetchRegister.pending, (state) => {
+      state.errorString = null;
+    });
+    builder.addCase(fetchRegister.fulfilled, (state) => {
+      state.errorString = null;
+    });
+    builder.addCase(fetchRegister.rejected, (state, action) => {
+      state.errorString = action.payload;
     });
   },
 });

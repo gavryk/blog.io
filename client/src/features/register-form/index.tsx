@@ -14,7 +14,7 @@ import styles from './styles.module.scss';
 export const RegisterForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
-  const { auth, errorString } = useSelector(authSelector);
+  const { errorString } = useSelector(authSelector);
   const navigate = useNavigate();
   const {
     register,
@@ -23,7 +23,7 @@ export const RegisterForm: React.FC = () => {
     formState: { errors, isValid },
   } = useForm<RegisterFormValues>();
   const onSubmit = (data: RegisterFormValues) => {
-    dispatch(fetchRegister());
+    dispatch(fetchRegister(data));
     if (errorString === null) {
       reset({ fullName: '', email: '', password: '' });
       navigate('/login');

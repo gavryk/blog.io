@@ -1,9 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../../axios';
-import { LoginFormValue } from './types';
+import { LoginFormValue, RegisterFormValues } from './types';
 import { omit } from 'lodash';
 
-export const fetchRegister = createAsyncThunk('auth/fetchRegister', async () => {});
+export const fetchRegister = createAsyncThunk(
+  'auth/fetchRegister',
+  async (params: RegisterFormValues, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/auth/register', params);
+      return data;
+    } catch (err: any) {
+      return rejectWithValue(err.response.data.message);
+    }
+  },
+);
 
 export const fetchLogin = createAsyncThunk(
   'auth/fetchLogin',
