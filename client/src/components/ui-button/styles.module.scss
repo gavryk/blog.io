@@ -63,6 +63,10 @@
   &.active {
     background-color: var(--base--color--black);
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .contained.green {
@@ -75,6 +79,10 @@
   &:hover,
   &.active {
     background-color: var(--base--color--teal-2);
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -89,6 +97,10 @@
   &.active {
     background-color: var(--base--color--orange-2);
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .contained.purple {
@@ -101,6 +113,10 @@
   &:hover,
   &.active {
     background-color: var(--base--color--purple-2);
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -115,6 +131,10 @@
   &.active {
     background-color: var(--base--color--black-2);
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 .contained.bordo {
   background-color: var(--base--color--main);
@@ -126,6 +146,10 @@
   &:hover,
   &.active {
     background-color: var(--base--color--black-2);
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -140,6 +164,10 @@
   &.active {
     background-color: var(--base--color--lightblue-2);
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .contained.red {
@@ -152,6 +180,10 @@
   &:hover,
   &.active {
     background-color: var(--base--color--red-2);
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -171,6 +203,10 @@
       color: var(--base--color--white);
     }
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .outlined.green {
@@ -188,6 +224,10 @@
     a {
       color: var(--base--color--white);
     }
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -207,6 +247,10 @@
       color: var(--base--color--white);
     }
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .outlined.purple {
@@ -224,6 +268,10 @@
     a {
       color: var(--base--color--white);
     }
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 
@@ -243,6 +291,10 @@
       color: var(--base--color--white);
     }
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .outlined.red {
@@ -261,6 +313,10 @@
       color: var(--base--color--white);
     }
   }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
+  }
 }
 
 .outlined.blue {
@@ -278,6 +334,10 @@
     a {
       color: var(--base--color--white);
     }
+  }
+  &:disabled {
+    background-color: var(--base--color--grey-6);
+    opacity: 0.5;
   }
 }
 

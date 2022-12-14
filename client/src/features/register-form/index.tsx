@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { UIButton, UIInput, UITypography } from '../../components';
-import { fetchLogin } from '../../redux/slices/auth/asyncAuth';
+import { fetchRegister } from '../../redux/slices/auth/asyncAuth';
 import { authSelector } from '../../redux/slices/auth/selector';
-import { LoginFormValue } from '../../redux/slices/auth/types';
+import { RegisterFormValues } from '../../redux/slices/auth/types';
 import { settingsSelector } from '../../redux/slices/settings/selectors';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 
-export const LoginForm: React.FC = () => {
+export const RegisterForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { auth, errorString } = useSelector(authSelector);
@@ -21,34 +21,36 @@ export const LoginForm: React.FC = () => {
     reset,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<LoginFormValue>();
-  const onSubmit = (data: LoginFormValue) => {
-    dispatch(fetchLogin(data));
-    if (auth !== null && errorString === null) {
-      reset({ email: '', password: '' });
+  } = useForm<RegisterFormValues>();
+  const onSubmit = (data: RegisterFormValues) => {
+    dispatch(fetchRegister());
+    if (errorString === null) {
+      reset({ fullName: '', email: '', password: '' });
+      navigate('/login');
     }
   };
-
-  useEffect(() => {
-    if (auth !== null && errorString === null) {
-      navigate('/');
-    }
-  }, [auth, errorString, navigate]);
 
   return (
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.5 }}
-      className={styles.loginForm}>
+      className={styles.registerForm}>
       <UITypography variant="h2" fontWeight="bold" bottomSpace="sm" textAlign="center">
-        Login
+        Register
       </UITypography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <UIInput
-          type="email"
+          type="text"
           id="userNameField"
-          label="User Email"
+          label="User Name"
+          {...register('fullName', { required: 'Please enter your username.' })}
+          error={errors.fullName && errors.fullName.message}
+        />
+        <UIInput
+          type="email"
+          id="emailField"
+          label="Email"
           {...register('email', { required: 'Please enter your email.' })}
           error={errors.email && errors.email.message}
         />
@@ -60,11 +62,11 @@ export const LoginForm: React.FC = () => {
           error={errors.password && errors.password.message}
         />
         <UIButton fluid type="submit" disabled={!isLoaded || !isValid}>
-          Login
+          Register
         </UIButton>
         <span className={styles.errorDB}>{errorString as React.ReactNode}</span>
         <span className={styles.notice}>
-          Don't you have an account? <Link to="/register">Register</Link>
+          Do you have an account? <Link to="/login">Login</Link>
         </span>
       </form>
     </motion.div>

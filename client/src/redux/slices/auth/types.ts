@@ -14,3 +14,9 @@ export interface LoginFormValue {
   email: '';
   password: string;
 }
+
+export type RegisterFormValues = {
+  fullName: string;
+  email: string;
+  password: string;
+};

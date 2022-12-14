@@ -4,8 +4,10 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
-  &.login,
-  &.register {
+  &.login {
     background-color: var(--base--color--lightblue);
+  }
+  &.register {
+    background-color: var(--base--color--main);
   }
 }
