@@ -5,14 +5,17 @@ import { useAppDispatch } from '../redux/store';
 import imgHolder from '../assets/img/noimg.png';
 import { setLoading } from '../redux/slices/settings/slice';
 import { PostItem } from '../redux/slices/posts/types';
-import { UITypography, UIUserInfo } from '../components';
+import { UIEditButtons, UITypography, UIUserInfo } from '../components';
 import moment from 'moment';
 import styles from '../styles/pages/Single.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import { authSelector } from '../redux/slices/auth/selector';
 
 export const Single: React.FC = () => {
   const [data, setData] = useState<PostItem>();
+  const { auth } = useSelector(authSelector);
   const dispatch = useAppDispatch();
   const { id } = useParams();
 
@@ -33,6 +36,11 @@ export const Single: React.FC = () => {
 
   return (
     <div className={styles.singlePost}>
+      {data?.user._id === auth?._id && (
+        <div className={styles.editableBtns}>
+          <UIEditButtons id={id || ''} />
+        </div>
+      )}
       <div className={styles.postImage}>
         <img src={data?.imageUrl || imgHolder} alt={data?.title} />
       </div>

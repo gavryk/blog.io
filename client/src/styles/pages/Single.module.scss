@@ -4,6 +4,19 @@
   width: 100%;
   margin: 0 auto;
   background-color: var(--base--color--white);
+  .editableBtns {
+    position: absolute;
+    top: var(--base--spaces--3);
+    right: var(--base--spaces--3);
+    z-index: 5;
+    opacity: 0;
+    transition: all, 0.4s ease-in-out;
+  }
+  &:hover {
+    .editableBtns {
+      opacity: 1;
+    }
+  }
 }
 .postImage {
   width: 100%;
