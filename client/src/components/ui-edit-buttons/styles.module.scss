@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  overflow: hidden;
+  button {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: var(--base--spaces--2) var(--base--spaces--4);
+    font-size: var(--base--font--size);
+  }
+}

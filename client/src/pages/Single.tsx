@@ -40,10 +40,12 @@ export const Single: React.FC = () => {
         {data?.user && (
           <UIUserInfo {...data?.user} additionalText={moment(data?.createdAt).format('LL')} />
         )}
-        <UITypography variant="h2" textAlign="center">
+        <UITypography variant="h2" textAlign="center" fontWeight="medium">
           {data?.title}
         </UITypography>
-        <div className={styles.text}>{data?.text}</div>
+        <div className={styles.text}>
+          <p>{data?.text}</p>
+        </div>
         <div className={styles.details}>
           <span>
             <FontAwesomeIcon icon={faEye} /> {data?.viewsCount}

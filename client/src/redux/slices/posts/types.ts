@@ -5,8 +5,8 @@ export interface PostsSliceTypes {
 
 export type PostItem = {
   _id: string;
-  title?: string;
-  text?: string;
+  title: string;
+  text: string;
   tags?: string[];
   viewsCount: number;
   imageUrl?: string;

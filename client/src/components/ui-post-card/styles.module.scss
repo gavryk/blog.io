@@ -5,8 +5,19 @@
   border-radius: 6px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
+  .editableBtns {
+    position: absolute;
+    top: var(--base--spaces--3);
+    right: var(--base--spaces--3);
+    z-index: 5;
+    opacity: 0;
+    transition: all, 0.4s ease-in-out;
+  }
   &:hover {
     box-shadow: var(--base--box-shadow-blue);
+    .editableBtns {
+      opacity: 1;
+    }
   }
   .cardImage {
     position: relative;
@@ -28,7 +39,7 @@
   }
   .postInfo {
     padding: 0 var(--base--spaces--6) var(--base--spaces--6);
-    .text {
+    .content {
       padding-left: var(--base--spaces--16);
       .tags {
         list-style: none;
@@ -51,6 +62,9 @@
         }
       }
 
+      .text {
+        margin-bottom: var(--base--spaces--10);
+      }
       .details {
         span {
           display: inline-flex;
@@ -59,11 +73,7 @@
           font-size: var(--base--font--size);
           margin-right: var(--base--spaces--5);
           opacity: 0.5;
-          cursor: pointer;
           transition: all 0.3s ease-in-out;
-          &:hover {
-            opacity: 1;
-          }
         }
       }
     }

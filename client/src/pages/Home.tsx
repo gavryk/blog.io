@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { SkeletonCard, UIGrid, UIPostCard, UITypography } from '../components';
+import { authSelector } from '../redux/slices/auth/selector';
 import { fetchPosts, fetchTags } from '../redux/slices/posts/asyncPosts';
 import { postsSelector } from '../redux/slices/posts/selector';
 import { settingsSelector } from '../redux/slices/settings/selectors';
@@ -11,6 +12,7 @@ import { Aside } from '../widgets';
 export const Home = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
+  const { auth } = useSelector(authSelector);
   const { posts } = useSelector(postsSelector);
 
   useEffect(() => {
@@ -19,7 +21,12 @@ export const Home = () => {
   }, [dispatch]);
 
   const postsItems = posts.map((post) => (
-    <UIPostCard {...post} key={post._id} link={`/posts/${post._id}`} />
+    <UIPostCard
+      {...post}
+      key={post._id}
+      link={`/posts/${post._id}`}
+      isEditable={auth?._id === post.user._id}
+    />
   ));
   const skeletons = [...new Array(8)].map((_, index) => <SkeletonCard key={index} />);
 

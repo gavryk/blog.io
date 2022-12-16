@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   list-style: none;
   outline: none;
-  font-family: 'Nunito', Roboto, system-ui, Tahoma, sans-serif;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', Roboto, system-ui, Tahoma, sans-serif;
   box-sizing: border-box;
 }
 
@@ -47,6 +50,7 @@ h4,
 h5,
 h6 {
   padding-bottom: var(--base--spaces--5);
+  font-weight: 700;
 }
 
 a,
@@ -114,7 +118,8 @@ h5 {
 }
 
 p {
-  font-size: var(--base--font--size);
+  font-size: var(--base--font--size-md);
+  line-height: 1.6;
 }
 
 a {

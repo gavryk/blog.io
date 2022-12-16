@@ -10,3 +10,4 @@ export * from './ui-post-card/skeleton-card';
 export * from './ui-user-info';
 export * from './ui-list';
 export * from './ui-list-item';
+export * from './ui-edit-buttons';
