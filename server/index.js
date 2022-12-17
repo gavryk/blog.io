@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads');
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname.replace(' ', '_'));
+    cb(null, Date.now() + file.originalname.replaceAll(' ', '_'));
   },
 });
 const upload = multer({ storage });
@@ -56,9 +56,9 @@ app.delete('/posts/:id', checkAuth, deletePost);
 app.get('/tags', getTags);
 
 //Upload Route
-app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+app.post('/upload', upload.single('image'), (req, res) => {
   res.json({
-    url: `/uploads/${req.file.originalname}`,
+    url: `/uploads/${req.file.filename}`,
   });
 });
 

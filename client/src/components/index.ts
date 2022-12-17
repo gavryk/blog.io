@@ -11,3 +11,4 @@ export * from './ui-user-info';
 export * from './ui-list';
 export * from './ui-list-item';
 export * from './ui-edit-buttons';
+export * from './ui-image-uploader';
