@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,16 +13,12 @@ import { setLoading } from '../../redux/slices/settings/slice';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 
-type UserImage = {
-  url: string;
-};
-
 export const RegisterForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { errorString } = useSelector(authSelector);
   const navigate = useNavigate();
-  const [userImage, setUImage] = useState<UserImage>();
+  const [userImage, setUImage] = useState('');
   const [file, setFile] = useState<ImageUpload>({
     file: null,
     imagePreviewUrl: '',
@@ -34,12 +30,16 @@ export const RegisterForm: React.FC = () => {
     dispatch(setLoading('loading'));
     try {
       const { data } = await axios.post(`/upload`, imageFile.file);
-      setUImage(data);
+      setUImage(data.url);
       dispatch(setLoading('success'));
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(userImage);
+  }, [userImage]);
 
   const {
     register,
@@ -53,7 +53,7 @@ export const RegisterForm: React.FC = () => {
         fullName: data.fullName,
         email: data.email,
         password: data.password,
-        avatarUrl: file.fileLoaded ? userImage?.url : '',
+        avatarUrl: userImage,
       }),
     );
     if (errorString === null) {
