@@ -13,12 +13,16 @@ import { setLoading } from '../../redux/slices/settings/slice';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 
+type UserImage = {
+  url: string;
+};
+
 export const RegisterForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { errorString } = useSelector(authSelector);
   const navigate = useNavigate();
-  const [userImage, setUImage] = useState();
+  const [userImage, setUImage] = useState<UserImage>();
   const [file, setFile] = useState<ImageUpload>({
     file: null,
     imagePreviewUrl: '',
@@ -29,7 +33,7 @@ export const RegisterForm: React.FC = () => {
     setFile(imageFile);
     dispatch(setLoading('loading'));
     try {
-      const { data } = await axios.post(`/upload`, file.file);
+      const { data } = await axios.post(`/upload`, imageFile.file);
       setUImage(data);
       dispatch(setLoading('success'));
     } catch (err) {
@@ -43,22 +47,15 @@ export const RegisterForm: React.FC = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<RegisterFormValues>();
-  const onSubmit = async (data: RegisterFormValues) => {
-    console.log({
-      fullName: data.fullName,
-      email: data.email,
-      password: data.password,
-      avatarUrl: file.fileLoaded ? userImage : '',
-    });
-
-    // dispatch(
-    //   fetchRegister({
-    //     fullName: data.fullName,
-    //     email: data.email,
-    //     password: data.password,
-    //     avatarUrl: file.fileLoaded ? imgUrl.url.replaceAll(' ', '_') : '',
-    //   }),
-    // );
+  const onSubmit = (data: RegisterFormValues) => {
+    dispatch(
+      fetchRegister({
+        fullName: data.fullName,
+        email: data.email,
+        password: data.password,
+        avatarUrl: file.fileLoaded ? userImage?.url : '',
+      }),
+    );
     if (errorString === null) {
       reset({ fullName: '', email: '', password: '' });
       setFile({
