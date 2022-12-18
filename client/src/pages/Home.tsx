@@ -41,7 +41,7 @@ export const Home = () => {
     </>
   ) : (
     <div className={styles.homePage}>
-      <UIGrid columns={1} gridGap={2}>
+      <UIGrid columns={1} gridGap={10}>
         {isLoaded === 'success' ? postsItems : skeletons}
       </UIGrid>
       <Aside />
