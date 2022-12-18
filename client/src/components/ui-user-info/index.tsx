@@ -18,7 +18,10 @@ export const UIUserInfo: React.FC<UserInfoProps> = ({
   return (
     <div className={clsx(styles.root, { [styles.small]: small })}>
       <div className={styles.userAvatar}>
-        <img src={avatarUrl || avatarHolder} alt="author" />
+        <img
+          src={avatarUrl ? `${process.env.REACT_APP_BASE_URL}${avatarUrl}` : avatarHolder}
+          alt="author"
+        />
       </div>
       <div className={styles.info}>
         <span className={styles.name}>{fullName}</span>

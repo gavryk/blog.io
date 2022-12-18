@@ -37,10 +37,6 @@ export const RegisterForm: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(userImage);
-  }, [userImage]);
-
   const {
     register,
     reset,
@@ -50,9 +46,7 @@ export const RegisterForm: React.FC = () => {
   const onSubmit = (data: RegisterFormValues) => {
     dispatch(
       fetchRegister({
-        fullName: data.fullName,
-        email: data.email,
-        password: data.password,
+        ...data,
         avatarUrl: userImage,
       }),
     );
