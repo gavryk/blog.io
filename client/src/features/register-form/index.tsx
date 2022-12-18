@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -70,7 +70,7 @@ export const RegisterForm: React.FC = () => {
       <UITypography variant="h2" fontWeight="bold" bottomSpace="sm" textAlign="center">
         Register
       </UITypography>
-      <UIImageUploader onChange={setUserImage} label="upload image" id="file" file={file} />
+      <UIImageUploader onChange={setUserImage} label="upload image" id="file" file={file} avatar />
       <form onSubmit={handleSubmit(onSubmit)}>
         <UIInput
           type="text"

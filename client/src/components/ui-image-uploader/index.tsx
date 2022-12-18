@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 import { UILabel } from '../ui-label';
+import avatarHolder from '../../assets/img/avatar-holder.jpg';
 import styles from './styles.module.scss';
 
 interface InputUploadProps {
@@ -18,6 +19,7 @@ interface InputUploadProps {
   accept?: string;
   multiple?: boolean;
   file: ImageUpload;
+  avatar?: boolean;
 }
 
 export type ImageUpload = {
@@ -41,6 +43,7 @@ export const UIImageUploader = React.forwardRef<HTMLInputElement, InputUploadPro
       accept = 'image/*',
       multiple,
       file,
+      avatar,
     },
     ref,
   ) => {
@@ -62,13 +65,18 @@ export const UIImageUploader = React.forwardRef<HTMLInputElement, InputUploadPro
     };
 
     return (
-      <div className={styles.uploadWrapper}>
+      <div className={clsx(styles.uploadWrapper)}>
         {!file?.fileLoaded ? (
-          <div className={styles.shUploadInput}>
+          <div className={clsx(styles.shUploadInput, { [styles.avatarUpload]: avatar })}>
             {label && (
               <UILabel htmlFor={id ? id : ''}>
                 <FontAwesomeIcon icon={faPlusCircle} color="#fff" size="2xl" />
               </UILabel>
+            )}
+            {avatar && (
+              <div className={styles.avatarHolder}>
+                <img src={avatarHolder} alt="avatarHolder" />
+              </div>
             )}
             <input
               id={id}
@@ -88,7 +96,7 @@ export const UIImageUploader = React.forwardRef<HTMLInputElement, InputUploadPro
           </div>
         ) : (
           <>
-            <div className={styles.preview}>
+            <div className={clsx(styles.preview, { [styles.avatarPreview]: avatar })}>
               <img src={file?.imagePreviewUrl as string} alt={file?.file?.name as string} />
             </div>
             <div className={styles.removeBtn} onClick={removeImage}>
