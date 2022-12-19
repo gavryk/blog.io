@@ -71,6 +71,7 @@ export const AddPostForm: React.FC = () => {
       imageUrl: postImage,
     };
     dispatch(fetchAddPost(fields));
+    navigate('/');
   };
 
   return (
