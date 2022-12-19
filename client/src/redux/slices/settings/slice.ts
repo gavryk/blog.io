@@ -1,3 +1,4 @@
+import { fetchAddPost } from './../posts/asyncPosts';
 import { fetchRegister } from './../auth/asyncAuth';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchLogin } from '../auth/asyncAuth';
@@ -42,6 +43,15 @@ export const settingsSlice = createSlice({
       state.isLoaded = 'success';
     });
     builder.addCase(fetchRegister.rejected, (state) => {
+      state.isLoaded = 'error';
+    });
+    builder.addCase(fetchAddPost.pending, (state) => {
+      state.isLoaded = 'loading';
+    });
+    builder.addCase(fetchAddPost.fulfilled, (state, action) => {
+      state.isLoaded = 'success';
+    });
+    builder.addCase(fetchAddPost.rejected, (state) => {
       state.isLoaded = 'error';
     });
   },

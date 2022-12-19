@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { AddPostForm } from '../features';
 import { authSelector } from '../redux/slices/auth/selector';
 
 export const AddPost: React.FC = () => {
@@ -10,5 +11,5 @@ export const AddPost: React.FC = () => {
     return <Navigate to="/" />;
   }
 
-  return <div>AddPost</div>;
+  return <AddPostForm />;
 };

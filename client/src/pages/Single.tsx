@@ -42,7 +42,10 @@ export const Single: React.FC = () => {
         </div>
       )}
       <div className={styles.postImage}>
-        <img src={data?.imageUrl || imgHolder} alt={data?.title} />
+        <img
+          src={data?.imageUrl ? `${process.env.REACT_APP_BASE_URL}${data.imageUrl}` : imgHolder}
+          alt={data?.title}
+        />
       </div>
       <div className={styles.info}>
         {data?.user && (

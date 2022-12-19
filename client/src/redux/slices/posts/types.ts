@@ -1,3 +1,5 @@
+import { AuthProps } from '../auth/types';
+
 export interface PostsSliceTypes {
   posts: PostItem[];
   tags: string[];
@@ -19,4 +21,11 @@ export type UserProps = {
   fullName: string;
   emai: string;
   avatarUrl?: string;
+};
+
+export type PublishPost = {
+  title: string;
+  text: string;
+  tags?: string[];
+  imageUrl?: string;
 };

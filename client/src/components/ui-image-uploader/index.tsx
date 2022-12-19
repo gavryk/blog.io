@@ -5,6 +5,8 @@ import React from 'react';
 import { UILabel } from '../ui-label';
 import avatarHolder from '../../assets/img/avatar-holder.jpg';
 import styles from './styles.module.scss';
+import { useAppDispatch } from '../../redux/store';
+import { setLoading } from '../../redux/slices/settings/slice';
 
 interface InputUploadProps {
   onChange: (file: ImageUpload) => void;
@@ -47,6 +49,7 @@ export const UIImageUploader = React.forwardRef<HTMLInputElement, InputUploadPro
     },
     ref,
   ) => {
+    const dispatch = useAppDispatch();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files[0]) {
         let image = e.target.files[0];
@@ -62,6 +65,7 @@ export const UIImageUploader = React.forwardRef<HTMLInputElement, InputUploadPro
 
     const removeImage = () => {
       onChange({ file: null, imagePreviewUrl: '', fileLoaded: false });
+      dispatch(setLoading('success'));
     };
 
     return (

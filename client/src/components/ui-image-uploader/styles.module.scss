@@ -12,12 +12,15 @@
   &:after {
     content: '';
     display: block;
-    padding-bottom: 92.6%;
+    padding-bottom: 49.9%;
   }
   &.avatarUpload {
     border-radius: 50%;
     background-color: transparent;
     overflow: hidden;
+    &:after {
+      padding-bottom: 92.6%;
+    }
     .avatarHolder {
       position: absolute;
       top: 0;
@@ -71,9 +74,12 @@
   &:after {
     content: '';
     display: block;
-    padding-bottom: 101.3%;
+    padding-bottom: 62.6%;
   }
   &.avatarPreview {
+    &:after {
+      padding-bottom: 76.6%;
+    }
     img {
       border-radius: 50%;
     }

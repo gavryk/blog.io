@@ -36,7 +36,7 @@ export const UIPostCard: React.FC<PostCardProps> = ({
       )}
       <Link to={link}>
         <div className={styles.cardImage}>
-          <img src={imageUrl || imgHolder} alt="" />
+          <img src={imageUrl ? `${process.env.REACT_APP_BASE_URL}${imageUrl}` : imgHolder} alt="" />
         </div>
       </Link>
       <div className={styles.postInfo}>
