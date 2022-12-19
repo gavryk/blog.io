@@ -8,12 +8,9 @@ import { setLoading } from '../../redux/slices/settings/slice';
 import axios from '../../axios';
 import { useNavigate } from 'react-router-dom';
 import { fetchAddPost } from '../../redux/slices/posts/asyncPosts';
-import { useSelector } from 'react-redux';
-import { authSelector } from '../../redux/slices/auth/selector';
 
 export const AddPostForm: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { auth } = useSelector(authSelector);
   const [postText, setPostText] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [postImage, setPostImage] = useState('');
