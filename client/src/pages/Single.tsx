@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { authSelector } from '../redux/slices/auth/selector';
+import ReactMarkdown from 'react-markdown';
 
 export const Single: React.FC = () => {
   const [data, setData] = useState<PostItem>();
@@ -54,9 +55,7 @@ export const Single: React.FC = () => {
         <UITypography variant="h2" textAlign="center" fontWeight="medium">
           {data?.title}
         </UITypography>
-        <div className={styles.text}>
-          <p>{data?.text}</p>
-        </div>
+        <div className={styles.text}>{data?.text && <ReactMarkdown children={data?.text} />}</div>
         <div className={styles.details}>
           <span>
             <FontAwesomeIcon icon={faEye} /> {data?.viewsCount}
