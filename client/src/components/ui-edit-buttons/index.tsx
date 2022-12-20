@@ -2,17 +2,23 @@ import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { fetchRemovePost } from '../../redux/slices/posts/asyncPosts';
+import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
 
 type EditButtonsProp = {
   id: string;
 };
 
-const removePost = (id: string) => {
-  console.log(id);
-};
-
 export const UIEditButtons: React.FC<EditButtonsProp> = ({ id }) => {
+  const dispatch = useAppDispatch();
+
+  const removePost = (id: string) => {
+    if (window.confirm('Are you sure you want to delete the post?')) {
+      dispatch(fetchRemovePost(id));
+    }
+  };
+
   return (
     <div className={styles.root}>
       <Link to={`/post/${id}/edit`}>

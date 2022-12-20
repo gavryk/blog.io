@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPosts, fetchTags } from './asyncPosts';
+import { fetchPosts, fetchTags, fetchRemovePost } from './asyncPosts';
 import { PostsSliceTypes } from './types';
 
 const initialState: PostsSliceTypes = {
@@ -12,6 +12,7 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    //Get Posts
     builder.addCase(fetchPosts.pending, (state) => {
       state.posts = [];
     });
@@ -21,6 +22,7 @@ export const postsSlice = createSlice({
     builder.addCase(fetchPosts.rejected, (state) => {
       state.posts = [];
     });
+    //Get Tags
     builder.addCase(fetchTags.pending, (state) => {
       state.tags = [];
     });
@@ -29,6 +31,10 @@ export const postsSlice = createSlice({
     });
     builder.addCase(fetchTags.rejected, (state) => {
       state.tags = [];
+    });
+    //Remove Post
+    builder.addCase(fetchRemovePost.pending, (state, action) => {
+      state.posts = state.posts.filter((obj) => obj._id !== action.meta.arg);
     });
   },
 });
