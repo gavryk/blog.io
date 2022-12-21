@@ -29,3 +29,8 @@ export type PublishPost = {
   tags?: string[];
   imageUrl?: string;
 };
+
+export type UpdatePost = {
+  id: string;
+  fields: PublishPost;
+};

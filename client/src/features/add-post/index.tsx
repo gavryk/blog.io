@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
 import styles from './styles.module.scss';
@@ -6,11 +6,12 @@ import { ImageUpload, UIButton, UIGrid, UIImageUploader, UIInput } from '../../c
 import { useAppDispatch } from '../../redux/store';
 import { setLoading } from '../../redux/slices/settings/slice';
 import axios from '../../axios';
-import { useNavigate } from 'react-router-dom';
-import { fetchAddPost } from '../../redux/slices/posts/asyncPosts';
+import { useNavigate, useParams } from 'react-router-dom';
+import { fetchAddPost, fetchUpdatePost } from '../../redux/slices/posts/asyncPosts';
 
 export const AddPostForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { id } = useParams();
   const [postText, setPostText] = useState('');
   const [postTitle, setPostTitle] = useState('');
   const [postImage, setPostImage] = useState('');
@@ -21,6 +22,7 @@ export const AddPostForm: React.FC = () => {
     fileLoaded: false,
   });
   const navigate = useNavigate();
+  const isEditing = Boolean(id);
 
   const setPImage = async (imageFile: ImageUpload) => {
     setFile(imageFile);
@@ -37,11 +39,12 @@ export const AddPostForm: React.FC = () => {
   const onChangeEditor = useCallback((value: string) => {
     setPostText(value);
   }, []);
+
   const options = React.useMemo(
     () => ({
       spellChecker: false,
       maxHeight: '400px',
-      autofocus: true,
+      autofocus: false,
       placeholder: 'Enter Text...',
       status: false,
     }),
@@ -67,9 +70,35 @@ export const AddPostForm: React.FC = () => {
       tags: postTags,
       imageUrl: postImage,
     };
-    dispatch(fetchAddPost(fields));
+    !isEditing
+      ? dispatch(fetchAddPost(fields))
+      : dispatch(fetchUpdatePost({ id: String(id), fields }));
     navigate('/');
   };
+
+  //EDIT POST
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`/posts/${id}`)
+        .then(({ data }) => {
+          setPostTitle(data.title);
+          setPostText(data.text);
+          setPostTags(data.tags);
+          setPostImage(data.imageUrl || '');
+          setFile({
+            file: null,
+            imagePreviewUrl: data.imageUrl
+              ? `${process.env.REACT_APP_BASE_URL}${data.imageUrl}`
+              : '',
+            fileLoaded: data.imageUrl ? true : false,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [id]);
 
   return (
     <div className={styles.addPostWrapper}>
@@ -96,7 +125,7 @@ export const AddPostForm: React.FC = () => {
       />
       <UIGrid columns={6} gridGap={2}>
         <UIButton color="blue" onClick={publishPost}>
-          Publish
+          {isEditing ? 'Save' : 'Publish'}
         </UIButton>
         <UIButton color="bordo" onClick={cancelEdit}>
           Cancel

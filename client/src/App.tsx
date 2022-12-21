@@ -25,6 +25,7 @@ const App = () => {
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<Home />} />
           <Route path="/posts/:id" element={<Single />} />
+          <Route path="/posts/:id/edit" element={<AddPost />} />
           <Route path="/add-post" element={<AddPost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

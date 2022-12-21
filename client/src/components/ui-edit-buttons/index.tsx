@@ -21,7 +21,7 @@ export const UIEditButtons: React.FC<EditButtonsProp> = ({ id }) => {
 
   return (
     <div className={styles.root}>
-      <Link to={`/post/${id}/edit`}>
+      <Link to={`/posts/${id}/edit`}>
         <button>
           <FontAwesomeIcon icon={faPen} color="#0096c7" />
         </button>

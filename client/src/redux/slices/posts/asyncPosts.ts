@@ -17,6 +17,14 @@ export const fetchAddPost = createAsyncThunk('posts/fetchAddPost', async (params
   return data;
 });
 
+export const fetchUpdatePost = createAsyncThunk(
+  'posts/fetchUpdatePost',
+  async ({ id, fields }: { id: string; fields: PublishPost }) => {
+    const { data } = await axios.patch(`/posts/${id}`, fields);
+    return data;
+  },
+);
+
 export const fetchRemovePost = createAsyncThunk('posts/fetchRemovePost', async (id: string) => {
   await axios.delete(`/posts/${id}`);
 });
