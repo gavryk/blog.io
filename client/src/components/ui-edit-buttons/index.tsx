@@ -1,7 +1,7 @@
 import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchRemovePost } from '../../redux/slices/posts/asyncPosts';
 import { useAppDispatch } from '../../redux/store';
 import styles from './styles.module.scss';
@@ -12,10 +12,12 @@ type EditButtonsProp = {
 
 export const UIEditButtons: React.FC<EditButtonsProp> = ({ id }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const removePost = (id: string) => {
     if (window.confirm('Are you sure you want to delete the post?')) {
       dispatch(fetchRemovePost(id));
+      navigate('/');
     }
   };
 
