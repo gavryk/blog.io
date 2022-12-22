@@ -13,12 +13,12 @@ export const Home = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { auth } = useSelector(authSelector);
-  const { posts } = useSelector(postsSelector);
+  const { posts, sortBy } = useSelector(postsSelector);
 
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(sortBy));
     dispatch(fetchTags());
-  }, [dispatch]);
+  }, [dispatch, sortBy]);
 
   const postsItems = posts.map((post) => (
     <UIPostCard

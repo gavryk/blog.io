@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../../axios';
-import { PublishPost } from './types';
+import { PublishPost, SortByTypes } from './types';
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const { data } = await axios.get(`/posts`);
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (params: SortByTypes) => {
+  const { data } = await axios.get(`/posts?sort=${params.name}&order=${params.order}`);
   return data;
 });
 

@@ -5,6 +5,10 @@ import { PostsSliceTypes } from './types';
 const initialState: PostsSliceTypes = {
   posts: [],
   tags: [],
+  sortBy: {
+    name: 'createdAt',
+    order: 'desc',
+  },
 };
 
 export const postsSlice = createSlice({
