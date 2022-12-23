@@ -1,11 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchPosts, fetchTags, fetchRemovePost } from './asyncPosts';
-import { PostsSliceTypes } from './types';
+import { PostsSliceTypes, SortTypes } from './types';
 
 const initialState: PostsSliceTypes = {
   posts: [],
   tags: [],
   sortBy: {
+    label: 'Latest (DESC)',
     name: 'createdAt',
     order: 'desc',
   },
@@ -14,7 +15,11 @@ const initialState: PostsSliceTypes = {
 export const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    setSortBy: (state, action: PayloadAction<SortTypes>) => {
+      state.sortBy = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     //Get Posts
     builder.addCase(fetchPosts.pending, (state) => {
@@ -43,6 +48,6 @@ export const postsSlice = createSlice({
   },
 });
 
-// export const {} = postsSlice.actions;
+export const { setSortBy } = postsSlice.actions;
 
 export default postsSlice.reducer;

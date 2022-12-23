@@ -1,7 +1,11 @@
 .homePage {
   display: grid;
   grid-template-columns: 1fr 35%;
-  grid-gap: var(--base--spaces--10);
+  column-gap: var(--base--spaces--10);
+  row-gap: var(--base--spaces--6);
   align-items: flex-start;
   position: relative;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
