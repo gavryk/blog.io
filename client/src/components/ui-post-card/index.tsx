@@ -67,9 +67,6 @@ export const UIPostCard: React.FC<PostCardProps> = ({
             <span>
               <FontAwesomeIcon icon={faEye} /> {viewsCount}
             </span>
-            <span>
-              <FontAwesomeIcon icon={faComment} />
-            </span>
           </div>
         </div>
       </div>
