@@ -9,7 +9,8 @@
   transition: all 0.3s ease-in-out;
   &.clickable {
     cursor: pointer;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: var(--base--color--grey-5);
     }
   }

@@ -1,5 +1,12 @@
 .root {
   position: relative;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   .listTitle {
     padding: 0 var(--base--spaces--6) var(--base--spaces--2);
   }

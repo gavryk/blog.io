@@ -10,6 +10,7 @@ interface ListItemProps {
   icon?: IconProp;
   onClick?: () => void;
   clickable?: boolean;
+  activeItem?: string;
 }
 
 export const UIListItem: React.FC<ListItemProps> = ({
@@ -17,10 +18,16 @@ export const UIListItem: React.FC<ListItemProps> = ({
   icon = faCircle,
   onClick,
   clickable,
+  activeItem,
 }) => {
   return (
     <div>
-      <div className={clsx(styles.item, { [styles.clickable]: clickable })} onClick={onClick}>
+      <div
+        className={clsx(styles.item, {
+          [styles.clickable]: clickable,
+          [styles.active]: activeItem === name,
+        })}
+        onClick={onClick}>
         <div className={styles.icon}>
           <FontAwesomeIcon icon={icon} />
         </div>

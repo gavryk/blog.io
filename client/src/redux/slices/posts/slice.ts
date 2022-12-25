@@ -5,6 +5,7 @@ import { PostsSliceTypes, SortTypes } from './types';
 const initialState: PostsSliceTypes = {
   posts: [],
   tags: [],
+  filterBy: '',
   sortBy: {
     label: 'Latest (DESC)',
     name: 'createdAt',
@@ -18,6 +19,9 @@ export const postsSlice = createSlice({
   reducers: {
     setSortBy: (state, action: PayloadAction<SortTypes>) => {
       state.sortBy = action.payload;
+    },
+    setFilterBy: (state, action) => {
+      state.filterBy = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +52,6 @@ export const postsSlice = createSlice({
   },
 });
 
-export const { setSortBy } = postsSlice.actions;
+export const { setSortBy, setFilterBy } = postsSlice.actions;
 
 export default postsSlice.reducer;

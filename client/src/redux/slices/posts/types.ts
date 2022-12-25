@@ -3,8 +3,14 @@ import { AuthProps } from '../auth/types';
 export interface PostsSliceTypes {
   posts: PostItem[];
   tags: string[];
+  filterBy: string;
   sortBy: SortTypes;
 }
+
+export type FilterSortBy = {
+  sortBy: SortTypes;
+  filterBy?: string;
+};
 
 export type SortTypes = {
   label: string;

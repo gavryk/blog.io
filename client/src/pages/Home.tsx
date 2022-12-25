@@ -16,12 +16,12 @@ export const Home = () => {
   const dispatch = useAppDispatch();
   const { isLoaded } = useSelector(settingsSelector);
   const { auth } = useSelector(authSelector);
-  const { posts, sortBy } = useSelector(postsSelector);
+  const { posts, sortBy, filterBy } = useSelector(postsSelector);
 
   useEffect(() => {
-    dispatch(fetchPosts(sortBy));
+    dispatch(fetchPosts({ sortBy, filterBy }));
     dispatch(fetchTags());
-  }, [dispatch, sortBy]);
+  }, [dispatch, sortBy, filterBy]);
 
   const selectSortHandler = useCallback(
     (type: SortTypes) => {

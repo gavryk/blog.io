@@ -3,9 +3,9 @@ import PostModel from '../models/Post.js';
 export const getPosts = async (req, res) => {
   const querySort = req.query.sort;
   const queryOrder = req.query.order === 'asc' ? querySort : `-${querySort}`;
+  const queryFilter = req.query.filter ? { tags: req.query.filter } : {};
   try {
-    console.log(queryOrder);
-    const posts = await PostModel.find().sort(queryOrder).populate('user').exec();
+    const posts = await PostModel.find(queryFilter).sort(queryOrder).populate('user').exec();
     res.json(posts);
   } catch (err) {
     console.log(err);
