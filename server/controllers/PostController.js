@@ -136,11 +136,9 @@ export const updatePost = async (req, res) => {
 //Get Tags
 export const getTags = async (req, res) => {
   try {
-    const posts = await PostModel.find().limit(3).exec();
-    const tags = posts
-      .map((obj) => obj.tags)
-      .flat()
-      .slice(0, 3);
+    const posts = await PostModel.find().exec();
+    const tags = posts.map((obj) => obj.tags).flat();
+
     res.json(tags);
   } catch (err) {
     console.log(err);

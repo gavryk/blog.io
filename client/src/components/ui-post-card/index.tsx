@@ -9,6 +9,8 @@ import styles from './styles.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faEye } from '@fortawesome/free-solid-svg-icons';
 import { UIEditButtons } from '../ui-edit-buttons';
+import { useAppDispatch } from '../../redux/store';
+import { setFilterBy } from '../../redux/slices/posts/slice';
 
 type PostCardProps = PostItem & {
   link: string;
@@ -27,6 +29,12 @@ export const UIPostCard: React.FC<PostCardProps> = ({
   link,
   isEditable,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const chooseTag = (tag: string) => {
+    dispatch(setFilterBy(tag));
+  };
+
   return (
     <div className={styles.postCard}>
       {isEditable && (
@@ -47,7 +55,9 @@ export const UIPostCard: React.FC<PostCardProps> = ({
           </UITypography>
           <ul className={styles.tags}>
             {tags?.map((tag, index) => (
-              <li key={`${tag}_${index}`}>#{tag}</li>
+              <li key={`${tag}_${index}`} onClick={() => chooseTag(tag)}>
+                #{tag}
+              </li>
             ))}
           </ul>
           <div className={styles.text}>

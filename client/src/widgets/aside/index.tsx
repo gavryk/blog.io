@@ -1,4 +1,5 @@
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { uniq } from 'lodash';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { UIList, UIListItem } from '../../components';
@@ -20,7 +21,7 @@ export const Aside: React.FC = () => {
     <div className={styles.root}>
       <AsideBlock>
         <UIList title="Tags" button="reset" buttonEvent={() => filteringPost('')}>
-          {tags.map((item, index) => (
+          {uniq(tags).map((item, index) => (
             <UIListItem
               key={`${item}_${index}`}
               name={item}
