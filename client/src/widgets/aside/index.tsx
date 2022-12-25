@@ -20,7 +20,11 @@ export const Aside: React.FC = () => {
   return (
     <div className={styles.root}>
       <AsideBlock>
-        <UIList title="Tags" button="reset" buttonEvent={() => filteringPost('')}>
+        <UIList
+          title="Tags"
+          button="reset"
+          buttonEvent={() => filteringPost('')}
+          heightSize="small">
           {uniq(tags).map((item, index) => (
             <UIListItem
               key={`${item}_${index}`}

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import { UIButton } from '../ui-button';
 import styles from './styles.module.scss';
@@ -7,9 +8,16 @@ interface ListProps {
   children: React.ReactNode;
   button?: string;
   buttonEvent?: () => void;
+  heightSize?: 'small' | 'full';
 }
 
-export const UIList: React.FC<ListProps> = ({ title, children, button, buttonEvent }) => {
+export const UIList: React.FC<ListProps> = ({
+  title,
+  children,
+  button,
+  buttonEvent,
+  heightSize = 'full',
+}) => {
   return (
     <div className={styles.root}>
       <div className={styles.top}>
@@ -18,7 +26,7 @@ export const UIList: React.FC<ListProps> = ({ title, children, button, buttonEve
           {button}
         </UIButton>
       </div>
-      <div className={styles.list}>{children}</div>
+      <div className={clsx(styles.list, styles[heightSize])}>{children}</div>
     </div>
   );
 };
