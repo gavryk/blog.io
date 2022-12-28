@@ -92,8 +92,8 @@
 }
 
 @mixin container($width) {
-  width: #{$width};
-  max-width: 96%;
+  max-width: #{$width};
+  width: 96%;
   margin: 0 auto;
   position: relative;
 }
