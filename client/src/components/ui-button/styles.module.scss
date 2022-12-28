@@ -357,6 +357,11 @@
   @media (max-width: 768px) {
     min-height: 60px;
   }
+  @media (max-width: 576px) {
+    min-height: 40px;
+    padding: var(--base--spaces--2) var(--base--spaces--4);
+    font-size: var(--base--font--size-sm);
+  }
 }
 .md {
   font-size: var(--base--font--size-md);
@@ -366,6 +371,10 @@
     min-width: 80px;
     padding: var(--base--spaces--2) var(--base--spaces--4);
   }
+  @media (max-width: 576px) {
+    min-height: 60px;
+    font-size: var(--base--font--size-sm);
+  }
 }
 .lg {
   font-size: var(--base--font--size-lg);
@@ -373,5 +382,10 @@
   min-width: 120px;
   @media (max-width: 768px) {
     min-height: 100px;
+  }
+  @media (max-width: 576px) {
+    padding: var(--base--spaces--3) var(--base--spaces--4);
+    min-height: 80px;
+    font-size: var(--base--font--size-sm);
   }
 }
