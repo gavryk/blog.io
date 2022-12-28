@@ -4,11 +4,22 @@
   align-items: center;
   grid-gap: var(--base--spaces--4);
   margin-bottom: var(--base--spaces--2);
+  &.mobileHide {
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
   &.small {
     grid-template-columns: 30px auto;
     margin-bottom: 0;
+    @media (max-width: 768px) {
+      grid-template-columns: 25px auto;
+    }
     .userAvatar {
       height: 30px;
+      @media (max-width: 768px) {
+        height: 25px;
+      }
     }
   }
   .userAvatar {
@@ -27,6 +38,9 @@
       display: block;
       &.name {
         font-weight: 700;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
       }
     }
   }

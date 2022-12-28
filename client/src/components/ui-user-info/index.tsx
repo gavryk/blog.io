@@ -7,6 +7,7 @@ import clsx from 'clsx';
 type UserInfoProps = Pick<UserProps, 'fullName' | 'avatarUrl'> & {
   additionalText?: string;
   small?: boolean;
+  mobileHide?: boolean;
 };
 
 export const UIUserInfo: React.FC<UserInfoProps> = ({
@@ -14,9 +15,10 @@ export const UIUserInfo: React.FC<UserInfoProps> = ({
   avatarUrl,
   additionalText,
   small,
+  mobileHide,
 }) => {
   return (
-    <div className={clsx(styles.root, { [styles.small]: small })}>
+    <div className={clsx(styles.root, { [styles.small]: small, [styles.mobileHide]: mobileHide })}>
       <div className={styles.userAvatar}>
         <img
           src={avatarUrl ? `${process.env.REACT_APP_BASE_URL}${avatarUrl}` : avatarHolder}

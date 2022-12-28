@@ -29,7 +29,7 @@ export const Header: React.FC = () => {
           <div className={styles.headerControls}>
             {auth !== null ? (
               <>
-                <UIUserInfo avatarUrl={auth.avatarUrl} fullName={auth.fullName} small />
+                <UIUserInfo avatarUrl={auth.avatarUrl} fullName={auth.fullName} small mobileHide />
                 <Link to="/add-post">
                   <UIButton size="sm" color="blue">
                     Add Post
