@@ -8,9 +8,12 @@ import { setLoading } from '../../redux/slices/settings/slice';
 import axios from '../../axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchAddPost, fetchUpdatePost } from '../../redux/slices/posts/asyncPosts';
+import { useSelector } from 'react-redux';
+import { settingsSelector } from '../../redux/slices/settings/selectors';
 
 export const AddPostForm: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { isLoaded } = useSelector(settingsSelector);
   const { id } = useParams();
   const [postText, setPostText] = useState('');
   const [postTitle, setPostTitle] = useState('');
@@ -73,7 +76,7 @@ export const AddPostForm: React.FC = () => {
     !isEditing
       ? dispatch(fetchAddPost(fields))
       : dispatch(fetchUpdatePost({ id: String(id), fields }));
-    navigate('/');
+    isLoaded === 'success' && navigate('/');
   };
 
   //EDIT POST
