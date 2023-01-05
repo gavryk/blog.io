@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchPosts, fetchTags, fetchRemovePost } from './asyncPosts';
+import { fetchPosts, fetchTags, fetchRemovePost, fetchAddPost } from './asyncPosts';
 import { PostsSliceTypes, SortTypes } from './types';
 
 const initialState: PostsSliceTypes = {
@@ -34,6 +34,10 @@ export const postsSlice = createSlice({
     });
     builder.addCase(fetchPosts.rejected, (state) => {
       state.posts = [];
+    });
+    //Add Post
+    builder.addCase(fetchAddPost.fulfilled, (state, action) => {
+      state.posts = [...state.posts, action.payload];
     });
     //Get Tags
     builder.addCase(fetchTags.pending, (state) => {
