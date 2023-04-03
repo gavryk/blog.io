@@ -8,6 +8,7 @@ https://blog-io-omega.vercel.app
   <li>Redux Toolkit</li>
   <li>Typescript</li>
   <li>Axios</li>
+  <li>Framer Motion</li>
   <li>Lodash</li>
   <li>React Hook Form</li>
   <li>clsx</li>
