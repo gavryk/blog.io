@@ -1,6 +1,5 @@
 https://blog-io-omega.vercel.app
 
-
 <h2>Stack Client:</h2>
 
 <ul>
